@@ -1,0 +1,19 @@
+<%= simple_form_for @pic, html: {multipart: true} do |f| %>
+  <% if @pic.errors.any? %>
+  <section id="errors" >
+  <h2> <%= pluralize(@pic.errors.count, "error") %> prohibited this image from being saved: </h2>
+    <ul>
+      <% @pic.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+    <% end %>
+  <div class="form-group">
+    <%= f.input :title, input_html: { class: 'form-control' } %>
+  </div>
+  <div class="form-group">
+    <%= f.input :description, input_html: { class: 'form-control' }  %>
+  </div>
+  <%= f.button :submit, class: 'btn btn-info'  %>
+<% end %>
